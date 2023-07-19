@@ -1,0 +1,128 @@
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">   
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>포트폴리오 메인페이지</title>
+        
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        
+        <link rel="shortcut icon" href="파비콘 주소">
+        <link rel="stylesheet" media="screen" href="css 주소">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+
+<body>
+    <header>
+        <p class="logo">PORTFOLIO</p>
+        <div class="nav">
+            <div class="menu">MENU</div>
+            <div class="navigation">
+                <a id="home" class="navigator active">HOME</a>
+                <a id="about" class="navigator">스펙/경력</a>
+                <a id="contact" class="navigator">UI 디자인</a>
+                <a id="contact" class="navigator">UI 디자인</a>
+            </div>
+        </div>
+    </header>
+	<nav></nav>
+	<article></article>
+	<footer></footer>
+</body>
+</html>
+
+
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    background: black;
+    color: #fff;
+    z-index: 9;
+}
+
+.navigation {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 8;
+    transform: scaleY(0);
+    background: #f44336;
+    transform-origin: top;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.2s cubic-bezier(0, 0.32, 0.36, 0.97);
+}
+
+.navigator {
+    margin: 10px;
+    background: transparent;
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: 1px;
+    font-size: 34px;
+    box-shadow: inset 0 0 5px 0px #f44336;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    opacity: 0;
+    transition: all 1s linear;
+}
+
+
+
+
+
+.navigation.open {
+    transform: scaleY(1);
+}
+
+.navigation.open .navigator {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+</style>
+
+<script>
+    $(".menu").click(function() {
+    var menuitem = $(".navigation > .navigator").length;
+
+    if ($(".navigation").hasClass("open")) {
+        for (var i = 1; i <= menuitem; i++) {
+            $(".navigation .navigator:nth-child(" + i + ")").css("transition", "all .1s linear ." + i + "s  ")
+        }
+        $(".navigation.open").css("transition", "all .2s linear ." + (menuitem + 1) + "s ");
+        $(".navigation").toggleClass("open");
+
+    } else {
+        $(".navigation").toggleClass("open");
+        for (var i = 1; i <= menuitem; i++) {
+            $(".navigation .navigator:nth-child(" + i + ")").css("transition", "all .1s linear ." + i + "s  ");
+            $(".navigation").css("transition", "all .2s linear .0s ");
+
+        }
+    }
+})
+</script>
